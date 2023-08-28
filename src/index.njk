@@ -1,0 +1,61 @@
+---
+title: jspe4ks
+headline: recovering overachiever
+links:
+- image: /img/icon-instagram.svg
+  url: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/icon-instagram.svg
+- image: /img/icon-google.svg
+  url: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/icon-google.svg
+---
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{{ '/assets/fonts/fraunces/full.css'}}" rel="stylesheet">
+  <title>{{title}}</title>
+</head>
+
+<style>
+  body {
+    background-color: lightblue;
+  }
+
+  * {
+    font-family: "Fraunces Variable"
+  }
+
+  h1 {
+    font-variation-settings: "WONK" 1, "opsz" 144, "SOFT" 22, "wght" 900;
+  }
+
+  p {
+    font-variation-settings: "WONK" 1, "opsz" 144, "SOFT" 22, "wght" 527;
+  }
+
+  body {
+    min-height: 100vh;
+    width: 100vw;
+    background: url("/background.png");
+  }
+</style>
+
+<body>
+  <hgroup>
+    <h1>{{title}}</h1>
+    <p>{{headline}}</p>
+  </hgroup>
+
+  <nav class="links">
+    {% for link in links %}
+    <div><img src="{{link.url}}" /></li>
+      {% endfor %}
+  </nav>
+
+  {% include "logo-var1.svg" %}
+</body>
+
+</html>
