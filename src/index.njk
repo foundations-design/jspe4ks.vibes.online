@@ -2,10 +2,12 @@
 title: jspe4ks
 headline: recovering overachiever
 links:
-- image: /img/icon-instagram.svg
-  url: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/icon-instagram.svg
-- image: /img/icon-google.svg
-  url: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/icon-google.svg
+  - image: /img/icon-instagram.svg
+    url: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/icon-instagram.svg
+  - image: /img/icon-google.svg
+    url: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/icon-google.svg
+titleColor: "#000853"
+headlineColor: "#FFFFFF"
 ---
 
 
@@ -30,16 +32,14 @@ links:
     font-family: "Fraunces Variable"
   }
 
-  h1 {
-    display: contents;
-  }
-
-  .title {
+  hgroup h1 {
     font-variation-settings: "WONK" 1, "opsz" 144, "SOFT" 22, "wght" 900;
+    color: {{ titleColor }};
   }
 
-  p {
+  hgroup p {
     font-variation-settings: "WONK" 1, "opsz" 144, "SOFT" 22, "wght" 527;
+    color: {{headlineColor}};
   }
 
   body {
@@ -47,20 +47,6 @@ links:
     width: 100vw;
     background: url("/background.png");
     display: grid;
-  }
-
-  @media screen and (orientation: portrait) {
-    svg {
-      width: 90vw;
-      height: auto;
-    }
-  }
-
-  @media screen and (orientation: landscape) {
-    svg {
-      width: auto;
-      height: 20vh;
-    }
   }
 
   .logo {
@@ -72,7 +58,7 @@ links:
 
 <body>
   <hgroup>
-    <svg class="title"><text x="" y="">{{title}}</text></svg>
+    <h1 class="title">{{title}}</h1>
     <p>{{headline}}</p>
   </hgroup>
 
@@ -85,11 +71,5 @@ links:
     {% include "logo-var1.svg" %}
   </div>
 </body>
-<script>
-  // In order to resize SVGs, a viewBox must be set
-  // The following code sets the viewBox based on the size of the browser window.
-  const svg = document.querySelector('.title');
-  const bbox = svg.getBBox();
-  svg.setAttribute('viewBox', `${bbox.x} ${bbox.y} ${bbox.width*1.2} ${bbox.height}`);
-</script>
+
 </html>
