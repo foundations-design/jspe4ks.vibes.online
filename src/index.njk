@@ -6,6 +6,10 @@ links:
     url: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/icon-instagram.svg
   - image: /img/icon-google.svg
     url: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/icon-google.svg
+  - image: /img/icon-instagram.svg
+    url: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/icon-instagram.svg
+  - image: /img/icon-google.svg
+    url: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/icon-google.svg
 titleColor: "#000853"
 headlineColor: "#FFFFFF"
 ---
@@ -23,10 +27,28 @@ headlineColor: "#FFFFFF"
   <title>{{title}}</title>
 </head>
 
+
+<!-- The following code sets <text> at 
+  90vw on portrait devices and 20vh on landscape devices-->
+
+
 <style>
-  body {
-    background-color: lightblue;
+   @media screen and (orientation: portrait) {
+    .svg-title {
+      width: 90vw;
+      height: auto;
+    }
   }
+
+  @media screen and (orientation: landscape) {
+    .svg-title {
+      width: auto;
+      height: 20vh;
+    }
+  } 
+</style>
+
+<style>
 
   * {
     font-family: "Fraunces Variable"
@@ -40,13 +62,14 @@ headlineColor: "#FFFFFF"
   hgroup p {
     font-variation-settings: "WONK" 1, "opsz" 144, "SOFT" 22, "wght" 527;
     color: {{headlineColor}};
-  }
+  } 
 
   body {
     min-height: 100vh;
     width: 100vw;
     background: url("/background.png");
     display: grid;
+    position: relative;
   }
 
   .logo {
@@ -54,22 +77,46 @@ headlineColor: "#FFFFFF"
     place-self: flex-end center;
     margin-bottom: 24px;
   }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+
+    position: absolute;
+    right: 12.5vw;
+    bottom: 20vh;
+  } 
 </style>
+
 
 <body>
   <hgroup>
-    <h1 class="title">{{title}}</h1>
+      <h1>
+        <svg id="svg-title">
+          <text font-family="Fraunces Variable"  y="50" >{{title}}</text>
+        </svg>
+      </h1>
     <p>{{headline}}</p>
   </hgroup>
 
   <nav class="links">
     {% for link in links %}
-    <div><img src="{{link.url}}" /></div>
+    <div class="link"><img src="{{link.url}}" /></div>
     {% endfor %}
   </nav>
   <div class="logo">
     {% include "logo-var1.svg" %}
   </div>
 </body>
-
+<script>
+  // In order to resize SVGs, a viewBox must be set
+  // The following code sets the viewBox based on the size of the browser window.
+  const svg = document.querySelector('#svg-title');
+  const svg_text = document.querySelector('#svg-title text');
+  const bbox = svg.getBBox();
+  svg.setAttribute('viewBox', `${bbox.x} ${bbox.y} ${bbox.width * 1.5} ${bbox.height}`);
+  svg_text.setAttribute('x', '50%')
+  svg_text.setAttribute('text-anchor', 'middle')
+</script>
 </html>
