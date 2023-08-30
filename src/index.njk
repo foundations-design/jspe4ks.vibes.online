@@ -14,109 +14,137 @@ titleColor: "#000853"
 headlineColor: "#FFFFFF"
 ---
 
-
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="{{ '/assets/fonts/fraunces/full.css'}}" rel="stylesheet">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="{{ '/assets/fonts/fraunces/full.css'}}" rel="stylesheet">
 
-  <link rel="stylesheet" href="/styles/index.css">
-  <title>{{title}}</title>
-</head>
+      <link rel="stylesheet" href="/styles/index.css">
+      <title>{{title}}</title>
+   </head>
 
-
-<!-- The following code sets <text> at 
+   <!-- The following code sets <text> at 
   90vw on portrait devices and 20vh on landscape devices-->
+   <style>
+      @media screen and (orientation: portrait) {
+         .svg-title {
+            width: 90vw;
+            height: auto;
+         }
+      }
 
+      @media screen and (orientation: landscape) {
+         .svg-title {
+            width: auto;
+            height: 20vh;
+         }
+      }
+   </style>
 
-<style>
-   @media screen and (orientation: portrait) {
-    .svg-title {
-      width: 90vw;
-      height: auto;
-    }
-  }
+   <style>
 
-  @media screen and (orientation: landscape) {
-    .svg-title {
-      width: auto;
-      height: 20vh;
-    }
-  } 
-</style>
+      * {
+         font-family: "Fraunces Variable";
+      }
 
-<style>
+      hgroup {
+         width: max-content;
+         height: max-content;
+         place-self: flex-start center;
+         position: absolute;
+         top: 10vh;
+      }
 
-  * {
-    font-family: "Fraunces Variable"
-  }
+      hgroup h1 {
+         font-variation-settings: "WONK" 1, "opsz" 144, "SOFT" 22, "wght" 900;
+         color: {{titleColor}};
+         margin: 0;
+         line-height: 1;
+      }
 
-  hgroup h1 {
-    font-variation-settings: "WONK" 1, "opsz" 144, "SOFT" 22, "wght" 900;
-    color: {{ titleColor }};
-  }
+      hgroup p {
+         font-variation-settings: "WONK" 1, "opsz" 144, "SOFT" 0, "wght" 527;
+         color: {{headlineColor}};
+         text-align: right;
+         margin-top: -0.5rem;
+         margin-right: 0.5em;
+         letter-spacing: 0.09em;
+      }
 
-  hgroup p {
-    font-variation-settings: "WONK" 1, "opsz" 144, "SOFT" 22, "wght" 527;
-    color: {{headlineColor}};
-  } 
+      body {
+         min-height: 100vh;
+         width: 100vw;
+         background: url("/background.png");
+         display: grid;
+         position: relative;
+      }
 
-  body {
-    min-height: 100vh;
-    width: 100vw;
-    background: url("/background.png");
-    display: grid;
-    position: relative;
-  }
+      .logo {
+         max-width: 30px;
+         place-self: flex-end center;
+         margin-bottom: 24px;
+      }
 
-  .logo {
-    max-width: 30px;
-    place-self: flex-end center;
-    margin-bottom: 24px;
-  }
+      .links {
+         display: flex;
+         flex-direction: column;
+         gap: var(--space-xs);
 
-  .links {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
+         position: absolute;
+         right: 12.5vw;
+         bottom: 20vh;
+      }
+      @media screen and (orientation: portrait) {
+         h1.title {
+            font-size: 25vw;
+            text-align: center;
+            width: min-content;
+         }
 
-    position: absolute;
-    right: 12.5vw;
-    bottom: 20vh;
-  } 
-</style>
+         hgroup .headline {
+            font-size: 4vw;
+         }
+      }
 
+      @media screen and (orientation: landscape) {
+         h1.title {
+            font-size: 10vw;
+            text-align: center;
+         }
+      }
+   </style>
 
-<body>
-  <hgroup>
-      <h1>
+   <body>
+      <hgroup>
+         {# <h1>
         <svg id="svg-title">
           <text font-family="Fraunces Variable"  y="50" >{{title}}</text>
         </svg>
-      </h1>
-    <p>{{headline}}</p>
-  </hgroup>
+      </h1> #}
+         <h1 class="title">{{title}}</h1>
+         <p class="headline">{{headline}}</p>
+      </hgroup>
 
-  <nav class="links">
-    {% for link in links %}
-    <div class="link"><img src="{{link.url}}" /></div>
-    {% endfor %}
-  </nav>
-  <div class="logo">
-    {% include "logo-var1.svg" %}
-  </div>
-</body>
-<script>
-  // In order to resize SVGs, a viewBox must be set
-  // The following code sets the viewBox based on the size of the browser window.
-  const svg = document.querySelector('#svg-title');
-  const svg_text = document.querySelector('#svg-title text');
-  const bbox = svg.getBBox();
-  svg.setAttribute('viewBox', `${bbox.x} ${bbox.y} ${bbox.width * 1.5} ${bbox.height}`);
-  svg_text.setAttribute('x', '50%')
-  svg_text.setAttribute('text-anchor', 'middle')
-</script>
+      <nav class="links">
+         {% for link in links %}
+            <div class="link"><img src="{{link.url}}"/></div>
+         {% endfor %}
+      </nav>
+      <div class="logo">
+         {% include "logo-var1.svg" %}
+      </div>
+   </body>
+   <script>
+      // In order to resize SVGs, a viewBox must be set
+      // The following code sets the viewBox based on the size of the browser window.
+      const svg = document.querySelector('#svg-title');
+      const svg_text = document.querySelector('#svg-title text');
+      const bbox = svg.getBBox();
+      svg.setAttribute('viewBox', `${bbox.x} ${bbox.y} ${bbox.width * 1.5} ${bbox.height}`);
+      svg_text.setAttribute('x', '50%')
+      svg_text.setAttribute('text-anchor', 'middle')
+   </script>
 </html>
