@@ -2,14 +2,14 @@
 title: jspe4ks
 headline: recovering overachiever
 links:
-  - image: /img/icon-instagram.svg
-    url: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/icon-instagram.svg
-  - image: /img/icon-google.svg
-    url: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/icon-google.svg
-  - image: /img/icon-instagram.svg
-    url: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/icon-instagram.svg
-  - image: /img/icon-google.svg
-    url: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/icon-google.svg
+  - image: https://res.cloudinary.com/foundations-design/image/upload/v1693520390/sm-icons/instagram.svg
+    url: https://www.instagram.com/foundations.design/
+  - image: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/tiktok.svg
+    url: https://www.tiktok.com/@justin.spe4ks?is_from_webapp=1&sender_device=pc
+  - image: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/spotify.svg
+    url: https://open.spotify.com/user/earlman32?si=b91656ecae0d4f38
+  - image: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/threads.svg
+    url: https://www.threads.net/@justin.spe4ks
 titleColor: "#000853"
 headlineColor: "#FFFFFF"
 ---
@@ -131,7 +131,9 @@ headlineColor: "#FFFFFF"
 
       <nav class="links">
          {% for link in links %}
-            <div class="link"><img src="{{link.url}}"/></div>
+            <div class="link">
+               <a target="_blank" href="{{link.url}}"><img src="{{link.image}}"/></a>
+            </div>
          {% endfor %}
       </nav>
       <div class="logo">
