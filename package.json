@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "eleventy --serve"
+    "dev": "eleventy --serve",
+    "build": "NODE_ENV=production eleventy --output dist --pathprefix $PATHPREFIX"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1"
