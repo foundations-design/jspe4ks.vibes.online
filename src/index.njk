@@ -92,10 +92,18 @@ headlineColor: "#FFFFFF"
          position: relative;
       }
 
-      .logo {
-         max-width: 30px;
+      footer {
          place-self: flex-end center;
          margin-bottom: 24px;
+         display: grid;
+         grid-template-columns: 1fr 1fr 1fr;
+         width: 100%;
+         justify-items: center;
+         align-items: center;
+      }
+
+      .logo {
+         max-width: 30px;
       }
 
       .links {
@@ -148,11 +156,22 @@ headlineColor: "#FFFFFF"
             </div>
          {% endfor %}
       </nav>
-      <div class="logo">
-         <a href="https://referral.foundations.design/jspe4ks" target="_blank">
-            {% include "logo-var1.svg" %}
-         </a>
-      </div>
+      <footer>
+         <div
+            class="lyket"
+            data-lyket-type="like"
+            data-lyket-id="jspe4ks"
+            data-lyket-namespace="lite"
+            data-lyket-template="twitter"
+            data-lyket-font-family="sans-serif"
+            data-lyket-color-text="rgba(255,255,255,.8)"
+      ></div>
+         <div class="logo">
+            <a href="https://referral.foundations.design/jspe4ks" target="_blank">
+               {% include "logo-var1.svg" %}
+            </a>
+         </div>
+      </footer>
    </body>
    <script>
       // In order to resize SVGs, a viewBox must be set
@@ -164,4 +183,5 @@ headlineColor: "#FFFFFF"
       svg_text.setAttribute('x', '50%')
       svg_text.setAttribute('text-anchor', 'middle')
    </script>
+   <script src="https://unpkg.com/@lyket/widget@latest/dist/lyket.js?apiKey=pt_b2e989b79fbbbe5f5c7b7d42869d3d"></script>
 </html>
