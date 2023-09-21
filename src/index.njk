@@ -17,6 +17,9 @@ links:
    - 
       image: https://res.cloudinary.com/foundations-design/image/upload/v1693256360/sm-icons/twitch.svg
       url: https://www.twitch.tv/justinspe4ks
+   -
+      image: https://res.cloudinary.com/foundations-design/image/upload/v1693520391/sm-icons/pinterest.svg
+      url: https://www.pinterest.com/jspe4ks/
 
 titleColor: "#000853"
 headlineColor: "#FFFFFF"
@@ -29,6 +32,8 @@ headlineColor: "#FFFFFF"
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="{{ '/assets/fonts/fraunces/full.css'}}" rel="stylesheet">
+      <link rel="preload" href="/assets/fonts/fraunces/files/fraunces-latin-full-normal.woff2" as="font" type="font/woff2" crossorigin>
+      <link rel="preload" href="/background.webp" as="image"/>
       <link rel="stylesheet" href="/styles/index.css">
       <title>🔥 {{title}}</title>
    </head>
@@ -52,6 +57,11 @@ headlineColor: "#FFFFFF"
    </style>
 
    <style>
+
+      /* avoid layout jank */
+      @font-feature-values "Fraunces Variable" {
+         font-display: block !important;
+      }
 
       * {
          font-family: "Fraunces Variable";
@@ -85,7 +95,7 @@ headlineColor: "#FFFFFF"
       body {
          min-height: 100lvh;
          width: 100vw;
-         background-image: url("/background.png");
+         background-image: url("/background.webp");
          background-position: 50% 0;
          background-size: cover;
          display: grid;
@@ -140,11 +150,6 @@ headlineColor: "#FFFFFF"
 
    <body>
       <hgroup>
-         {# <h1>
-        <svg id="svg-title">
-          <text font-family="Fraunces Variable"  y="50" >{{title}}</text>
-        </svg>
-      </h1> #}
          <h1 class="title">{{title}}</h1>
          <p class="headline">{{headline}}</p>
       </hgroup>
@@ -173,15 +178,6 @@ headlineColor: "#FFFFFF"
          </div>
       </footer>
    </body>
-   <script>
-      // In order to resize SVGs, a viewBox must be set
-      // The following code sets the viewBox based on the size of the browser window.
-      const svg = document.querySelector('#svg-title');
-      const svg_text = document.querySelector('#svg-title text');
-      const bbox = svg.getBBox();
-      svg.setAttribute('viewBox', `${bbox.x} ${bbox.y} ${bbox.width * 1.5} ${bbox.height}`);
-      svg_text.setAttribute('x', '50%')
-      svg_text.setAttribute('text-anchor', 'middle')
-   </script>
+
    <script src="https://unpkg.com/@lyket/widget@latest/dist/lyket.js?apiKey=pt_b2e989b79fbbbe5f5c7b7d42869d3d"></script>
 </html>
